@@ -1,12 +1,21 @@
 import asyncio
 import json
 import os
+import sys
 
 import boto3
+import nest_asyncio
 import streamlit as st
 from dotenv import load_dotenv
 
 from mcp_client import EAMcpClient
+
+# Windows: SelectorEventLoop はサブプロセスをサポートしないため ProactorEventLoop に切り替える
+if sys.platform == "win32":
+    asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
+
+# Streamlit のイベントループ内で asyncio.run() を使えるようにする
+nest_asyncio.apply()
 
 load_dotenv()
 
@@ -18,9 +27,10 @@ MODEL_ID = os.getenv(
 )
 EA_MCP_COMMAND_STR = os.getenv(
     "EA_MCP_COMMAND",
-    r"C:\Program Files\Sparx Systems\EA\MCP_Server\MCP3.exe",
+    rf"C:\Program Files\SparxSystems Japan\EA\MCP_Server\MCP3.exe",
 )
-EA_COMMAND = EA_MCP_COMMAND_STR.split()
+# 文字列をリストに変換して渡す（create_subprocess_exec の引数として正しく展開される）
+EA_COMMAND = [EA_MCP_COMMAND_STR]
 AWS_REGION = os.getenv("AWS_REGION", "ap-northeast-1")
 
 bedrock = boto3.client("bedrock-runtime", region_name=AWS_REGION)
@@ -122,6 +132,15 @@ st.set_page_config(page_title="EA AI Agent", page_icon="🏗️", layout="wide")
 st.title("🏗️ EA AI Agent  (Bedrock + MCP)")
 
 # EA MCP 接続
+mcp_exe = EA_COMMAND[0]
+if not os.path.exists(mcp_exe):
+    st.sidebar.error("MCP3.exe が見つかりません")
+    st.error(
+        f"MCP3.exe が見つかりません: `{mcp_exe}`\n\n"
+        "`.env` の `EA_MCP_COMMAND` でパスを指定してください。"
+    )
+    st.stop()
+
 try:
     ea = get_ea_client()
     st.sidebar.success(f"EA MCP 接続済み — {len(ea.tools)} ツール利用可能")
@@ -130,11 +149,19 @@ try:
             desc = t.get("description", "")[:80]
             st.markdown(f"- **{t['name']}**: {desc}")
 except Exception as exc:
+    import traceback
     st.sidebar.error(f"EA MCP 接続エラー: {exc}")
     st.error(
-        "Enterprise Architect が起動していないか、MCP3.exe のパスが正しくありません。"
-        "\n\n`.env` の `EA_MCP_COMMAND` を確認してください。"
+        f"EA MCP への接続に失敗しました。\n\n"
+        f"**MCP3.exe パス:** `{EA_COMMAND[0]}`\n\n"
+        f"**エラー詳細:** `{type(exc).__name__}: {exc}`\n\n"
+        "**確認事項:**\n"
+        "1. Enterprise Architect が起動しているか\n"
+        "2. 上記パスに MCP3.exe が存在するか\n"
+        "3. `.env` の `EA_MCP_COMMAND` が正しいか"
     )
+    with st.expander("スタックトレース"):
+        st.code(traceback.format_exc())
     st.stop()
 
 # 会話履歴の初期化
