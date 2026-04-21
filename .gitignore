@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# 環境変数（認証情報を含むためコミットしない）
+.env
+
+# Streamlit
+.streamlit/
+
+# IDE
+.vscode/
+.idea/
