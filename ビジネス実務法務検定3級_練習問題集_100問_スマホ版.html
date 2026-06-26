@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>ビジネス実務法務検定3級 練習問題集（全100問）</title>
+<style>
+:root{
+  --bg:#eef1f7; --card:#ffffff; --ink:#1b232e; --muted:#5c6877;
+  --brand:#1f4e79; --brand-soft:#e8f0fb; --line:#dbe2ec;
+  --ok-bg:#e7f6ec; --ok-bd:#2e8b57; --ok-ink:#1b6b3a;
+  --ng-bg:#fdecec; --ng-bd:#c0392b; --ng-ink:#a5281b;
+  --btn:#1f4e79; --btn-ink:#ffffff; --chip:#ffffff;
+  --fs:17px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f141b; --card:#1a212b; --ink:#e8eef6; --muted:#9fb0c2;
+    --brand:#84b4ea; --brand-soft:#1e2b3a; --line:#2b3744;
+    --ok-bg:#16301f; --ok-bd:#3fae6b; --ok-ink:#84e3a6;
+    --ng-bg:#341a18; --ng-bd:#e0675a; --ng-ink:#f4ada3;
+    --btn:#2d63a0; --btn-ink:#ffffff; --chip:#1a212b;
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{font-size:var(--fs);}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Noto Sans JP","Meiryo",system-ui,sans-serif;
+  line-height:1.75;-webkit-text-size-adjust:100%;}
+.wrap{max-width:680px;margin-inline:auto;padding:0 14px 96px;}
+
+header.hero{padding:20px 4px 12px;}
+header.hero h1{margin:0 0 4px;font-size:1.32rem;line-height:1.45;color:var(--brand);}
+header.hero p{margin:0;color:var(--muted);font-size:.92rem;}
+
+.sticky{position:sticky;top:0;z-index:10;background:var(--bg);
+  padding:8px 0 6px;border-block-end:1px solid var(--line);margin-block-end:12px;}
+.progress-wrap{display:flex;align-items:center;gap:10px;margin-block-end:8px;}
+.bar{flex:1;height:9px;border-radius:99px;background:var(--line);overflow:hidden;}
+.bar > span{display:block;height:100%;width:0;background:var(--brand);transition:width .25s;}
+.score{font-size:.82rem;font-weight:700;color:var(--brand);white-space:nowrap;}
+.chips{display:flex;gap:7px;overflow-x:auto;padding-block-end:3px;scrollbar-width:none;}
+.chips::-webkit-scrollbar{display:none;}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:var(--chip);color:var(--ink);
+  border-radius:99px;padding:7px 13px;font-size:.85rem;cursor:pointer;font-family:inherit;}
+.chip.active{background:var(--brand);color:#fff;border-color:var(--brand);}
+
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-block-end:14px;}
+.toolbar button{border:1px solid var(--line);background:var(--card);color:var(--ink);
+  padding:8px 14px;border-radius:99px;cursor:pointer;font-size:.85rem;font-family:inherit;}
+
+.field-head{color:var(--brand);font-size:.98rem;font-weight:700;
+  border-inline-start:5px solid var(--brand);padding-inline-start:10px;margin:22px 0 12px;}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:18px 16px;margin-block-end:14px;scroll-margin-top:84px;}
+.qhead{display:flex;align-items:center;gap:9px;margin-block-end:9px;}
+.qno{font-weight:800;color:var(--brand);font-size:1.02rem;}
+.badge{font-size:.72rem;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:2px 9px;}
+.qtext{margin:0 0 14px;font-weight:700;font-size:1.06rem;line-height:1.7;}
+.choices{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
+.choice{width:100%;text-align:start;display:flex;gap:9px;align-items:flex-start;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);
+  border-radius:12px;padding:13px 14px;cursor:pointer;font-size:1rem;line-height:1.65;
+  font-family:inherit;min-height:48px;transition:border-color .15s,background .15s;}
+.choice .lab{font-weight:800;color:var(--brand);flex:0 0 1.4em;text-align:center;}
+.choice.is-correct{background:var(--ok-bg);border-color:var(--ok-bd);}
+.choice.is-correct .lab{color:var(--ok-ink);}
+.choice.is-wrong{background:var(--ng-bg);border-color:var(--ng-bd);}
+.choice.is-wrong .lab{color:var(--ng-ink);}
+.choice.is-correct::after{content:"正解";margin-inline-start:auto;align-self:center;font-size:.72rem;font-weight:800;color:var(--ok-ink);flex:0 0 auto;}
+.choice.is-wrong::after{content:"選択";margin-inline-start:auto;align-self:center;font-size:.72rem;font-weight:800;color:var(--ng-ink);flex:0 0 auto;}
+.card.locked .choice{cursor:default;}
+
+.actions{display:flex;align-items:center;gap:10px;margin-block-start:13px;}
+.reveal-btn{background:var(--btn);color:var(--btn-ink);border:none;border-radius:10px;
+  padding:11px 18px;cursor:pointer;font-size:.92rem;font-family:inherit;min-height:44px;}
+.reset-btn{background:transparent;border:1px solid var(--line);color:var(--muted);
+  border-radius:10px;padding:11px 14px;cursor:pointer;font-size:.86rem;font-family:inherit;min-height:44px;}
+.answer{margin-block-start:14px;border-block-start:1px dashed var(--line);padding-block-start:13px;}
+.answer .correct{margin:0 0 7px;color:var(--brand);font-size:1.02rem;}
+.answer .explain{margin:0;font-size:.96rem;line-height:1.8;}
+.answer .ref{margin:9px 0 0;font-size:.82rem;color:var(--muted);
+  background:var(--brand-soft);border-radius:8px;padding:7px 10px;line-height:1.6;}
+
+#toTop{position:fixed;inset-block-end:18px;inset-inline-end:16px;z-index:20;
+  width:50px;height:50px;border-radius:50%;border:none;background:var(--brand);color:#fff;
+  font-size:1.3rem;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);}
+
+footer.note{margin-block-start:26px;color:var(--muted);font-size:.8rem;text-align:center;line-height:1.85;}
+
+@media print{
+  .sticky,.toolbar,.reveal-btn,.reset-btn,#toTop{display:none !important;}
+  .answer{display:block !important;}
+  body{background:#fff;}
+  .card{break-inside:avoid;border-color:#bbb;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <h1>ビジネス実務法務検定試験®3級<br>練習問題集（全100問）</h1>
+    <p>スマホ最適化版／選択肢をタップすると採点され、その場で正解・解説が開きます。</p>
+  </header>
+
+  <div class="sticky">
+    <div class="progress-wrap">
+      <div class="bar"><span id="barFill"></span></div>
+      <div class="score" id="score">0/100　正解0</div>
+    </div>
+    <div class="chips" id="chips"><button type="button" class="chip active" data-f="all">すべて（100）</button><button type="button" class="chip" data-f="0">民法・取引（40）</button><button type="button" class="chip" data-f="1">会社法（18）</button><button type="button" class="chip" data-f="2">企業規制（20）</button><button type="button" class="chip" data-f="3">労働法（10）</button><button type="button" class="chip" data-f="4">紛争・手形（12）</button></div>
+  </div>
+
+  <div class="toolbar">
+    <button type="button" id="openAll">全解説を開く</button>
+    <button type="button" id="closeAll">閉じる・全リセット</button>
+  </div>
+
+  <h2 class="field-head" data-f="0">取引法務・民法</h2>
+  <article class="card" id="q1" data-f="0">
+    <div class="qhead"><span class="qno">問1</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">契約の成立に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">契約は、当事者間で書面を作成しなければ成立しない。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">イ</span><span class="ctxt">契約は、申込みと承諾の意思表示が合致することによって成立する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">契約の申込みは、いかなる場合でも自由に撤回することができる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">隔地者間の契約は、承諾の通知を発信した時に成立する。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>イ</strong></p>
+      <p class="explain">契約は原則として申込みと承諾の合致により成立し、特約がない限り書面は不要（諾成契約の原則）。承諾の効力は到達時に生じる（到達主義）。</p>
+      <p class="ref">根拠：民法522条（申込みと承諾による契約の成立）</p>
+    </div>
+  </article>
+  <article class="card" id="q2" data-f="0">
+    <div class="qhead"><span class="qno">問2</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">契約自由の原則に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">契約自由の原則のもと、当事者は原則として契約内容を自由に決定できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">契約の内容はすべて法律で定められ、当事者は変更できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">契約は、行政官庁の許可がなければ一切締結できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">契約自由の原則のもとでは、強行法規に反する契約も有効である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">契約自由の原則により、締結の自由・内容決定の自由などが認められる。ただし強行法規・公序良俗に反する契約は無効で、エは誤り。</p>
+      <p class="ref">根拠：民法521条（契約自由の原則）</p>
+    </div>
+  </article>
+  <article class="card" id="q3" data-f="0">
+    <div class="qhead"><span class="qno">問3</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">公序良俗に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">公序良俗に反する法律行為も、当事者が合意していれば有効である。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">イ</span><span class="ctxt">公の秩序または善良の風俗に反する法律行為は、無効である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">強行法規に反する契約も、常に有効である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">賭博に関する契約も、法律上当然に有効である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>イ</strong></p>
+      <p class="explain">公序良俗（民法90条）に反する法律行為は無効である。ア・ウ・エはいずれもこれに反し誤り。</p>
+      <p class="ref">根拠：民法90条（公序良俗）</p>
+    </div>
+  </article>
+  <article class="card" id="q4" data-f="0">
+    <div class="qhead"><span class="qno">問4</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">意思能力に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">意思能力を欠く者がした法律行為は、有効である。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">イ</span><span class="ctxt">意思能力を欠く状態でした法律行為は、無効である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">意思能力は、契約の効力とは無関係である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">意思能力がなくても、本人が後で気に入れば常に有効となる。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>イ</strong></p>
+      <p class="explain">法律行為の当事者が意思能力を欠いていたときは、その法律行為は無効である（民法3条の2）。</p>
+      <p class="ref">根拠：民法3条の2（意思能力）</p>
+    </div>
+  </article>
+  <article class="card" id="q5" data-f="0">
+    <div class="qhead"><span class="qno">問5</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">未成年者の行為能力に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">未成年者が法定代理人の同意を得ずにした契約は、常に無効である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">未成年者が単に権利を得る行為にも、法定代理人の同意が必要である。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">ウ</span><span class="ctxt">未成年者が法定代理人の同意を得ずにした契約は、原則として取り消すことができる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">未成年者が成年者であると詐術を用いた場合でも、当然に取り消せる。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ウ</strong></p>
+      <p class="explain">未成年者が同意を得ずにした行為は原則取り消せる（無効ではない）。単に権利を得る行為には同意不要、詐術を用いた場合は取消し不可。</p>
+      <p class="ref">根拠：民法5条（未成年者）</p>
+    </div>
+  </article>
+  <article class="card" id="q6" data-f="0">
+    <div class="qhead"><span class="qno">問6</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">成年被後見人に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">成年被後見人がした法律行為は、日常生活に関する行為を除き、取り消すことができる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">成年被後見人がした法律行為は、すべて有効で取り消せない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">成年被後見人は、すべての法律行為を単独で有効にできる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">成年被後見人の法律行為は、日常生活に関する行為も含めすべて取り消せる。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">成年被後見人の法律行為は、日用品の購入その他日常生活に関する行為を除き取り消すことができる（民法9条）。</p>
+      <p class="ref">根拠：民法9条（成年被後見人）</p>
+    </div>
+  </article>
+  <article class="card" id="q7" data-f="0">
+    <div class="qhead"><span class="qno">問7</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">被保佐人に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">被保佐人は、いかなる行為も単独で有効にできない。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">イ</span><span class="ctxt">被保佐人が一定の重要な財産上の行為をするには、保佐人の同意が必要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">被保佐人がした行為は、すべて無効である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">被保佐人には、保護者は付されない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>イ</strong></p>
+      <p class="explain">被保佐人が借財・保証・不動産の処分など重要な財産上の行為をするには保佐人の同意を要する（民法13条）。</p>
+      <p class="ref">根拠：民法13条（被保佐人）</p>
+    </div>
+  </article>
+  <article class="card" id="q8" data-f="0">
+    <div class="qhead"><span class="qno">問8</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">意思表示に関する次の記述のうち、最も適切でないものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">強迫による意思表示は、取り消すことができる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">詐欺による意思表示の取消しは、善意無過失の第三者に対抗できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">錯誤による意思表示は、一定の要件のもとで取り消すことができる。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">エ</span><span class="ctxt">心裡留保による意思表示は、相手方が善意無過失であっても常に無効である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>エ</strong></p>
+      <p class="explain">心裡留保は原則有効で、相手方が真意でないことを知り又は知り得たときに限り無効（民法93条）。よってエが誤り。</p>
+      <p class="ref">根拠：民法93条（心裡留保）</p>
+    </div>
+  </article>
+  <article class="card" id="q9" data-f="0">
+    <div class="qhead"><span class="qno">問9</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">虚偽表示に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">相手方と通じてした虚偽の意思表示は有効である。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">イ</span><span class="ctxt">相手方と通謀してした虚偽の意思表示は無効だが、善意の第三者に対抗できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">通謀虚偽表示は、善意の第三者にも当然に対抗できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">虚偽表示による無効は、当事者間でも主張できない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>イ</strong></p>
+      <p class="explain">通謀虚偽表示は当事者間では無効だが、その無効を善意の第三者に対抗できない（民法94条）。</p>
+      <p class="ref">根拠：民法94条（虚偽表示）</p>
+    </div>
+  </article>
+  <article class="card" id="q10" data-f="0">
+    <div class="qhead"><span class="qno">問10</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">錯誤に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">錯誤による意思表示は、要件を満たせば取り消すことができる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">錯誤による意思表示は、常に無効である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">動機の錯誤は、いかなる場合も考慮されない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">錯誤の有無にかかわらず、意思表示は常に有効である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">重要な錯誤があれば意思表示を取り消すことができる（民法95条）。改正により『無効』から『取消し』に変更された。</p>
+      <p class="ref">根拠：民法95条（錯誤）</p>
+    </div>
+  </article>
+  <article class="card" id="q11" data-f="0">
+    <div class="qhead"><span class="qno">問11</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">代理に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">代理人が本人のためにすることを示さずにした意思表示は、原則として代理人自身のためにしたものとみなされる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">無権代理人がした契約は、本人が追認しなくても当然に本人に効力を生じる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">代理人は、いかなる場合も復代理人を選任できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">本人の追認があっても、無権代理行為の効力は追認の時以後にのみ生じる。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">顕名をしない意思表示は原則代理人自身のためとみなされる（民法100条）。無権代理は追認で原則遡及的に有効、復代理は一定要件で選任可。</p>
+      <p class="ref">根拠：民法100条（顕名）</p>
+    </div>
+  </article>
+  <article class="card" id="q12" data-f="0">
+    <div class="qhead"><span class="qno">問12</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">無権代理・表見代理に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">無権代理行為は、本人が追認しなくても常に有効である。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">イ</span><span class="ctxt">本人が追認すれば、無権代理行為は原則として契約時にさかのぼって有効となる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">表見代理が成立しても、本人は一切責任を負わない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">無権代理人は、相手方に対して一切責任を負わない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>イ</strong></p>
+      <p class="explain">無権代理行為は本人の追認により原則遡及的に有効となる（民法113条・116条）。表見代理が成立すれば本人が責任を負い、無権代理人も責任を負うことがある。</p>
+      <p class="ref">根拠：民法113条・116条（無権代理・追認）</p>
+    </div>
+  </article>
+  <article class="card" id="q13" data-f="0">
+    <div class="qhead"><span class="qno">問13</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">消滅時効に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">債権は、権利を行使できることを知った時から5年間行使しないと、時効により消滅することがある。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">債権は、いかなる場合も時効によって消滅しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">消滅時効の期間は、すべての債権について一律1年である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">時効は、当事者が援用しなくても裁判所が職権で適用する。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">債権は知った時から5年、行使できる時から10年で時効消滅する（民法166条）。時効は当事者の援用が必要（民法145条）。</p>
+      <p class="ref">根拠：民法166条（消滅時効）</p>
+    </div>
+  </article>
+  <article class="card" id="q14" data-f="0">
+    <div class="qhead"><span class="qno">問14</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">取得時効に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">他人の物を一定期間占有しても、所有権を取得することはない。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">イ</span><span class="ctxt">所有の意思をもって平穏・公然と他人の物を一定期間占有した者は、その所有権を取得することがある。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">取得時効は、不動産についてのみ認められる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">占有が他人の物であることを知っていれば、取得時効は一切認められない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>イ</strong></p>
+      <p class="explain">所有の意思をもって平穏・公然に占有した者は、20年（善意無過失なら10年）で所有権を取得する（民法162条）。</p>
+      <p class="ref">根拠：民法162条（取得時効）</p>
+    </div>
+  </article>
+  <article class="card" id="q15" data-f="0">
+    <div class="qhead"><span class="qno">問15</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">時効の援用に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">時効による利益を受けるには、当事者がこれを援用しなければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">時効は、当事者の意思に関係なく当然に効力を生じる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">時効の利益は、あらかじめ放棄することができる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">時効の援用は、裁判所だけが行える。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">時効は当事者が援用しなければ裁判所はこれによって裁判できない（民法145条）。時効の利益はあらかじめ放棄できない（146条）。</p>
+      <p class="ref">根拠：民法145条（時効の援用）</p>
+    </div>
+  </article>
+  <article class="card" id="q16" data-f="0">
+    <div class="qhead"><span class="qno">問16</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">同時履行の抗弁権に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">双務契約の当事者は、相手方が債務の履行を提供するまで、自己の債務の履行を拒むことができる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">双務契約でも、自己の債務を常に先に履行しなければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">同時履行の抗弁権は、片務契約において認められる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">相手方が履行を提供しても、自己の履行は永久に拒める。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">双務契約では、相手方がその債務の履行を提供するまで自己の債務の履行を拒める（民法533条）。</p>
+      <p class="ref">根拠：民法533条（同時履行の抗弁権）</p>
+    </div>
+  </article>
+  <article class="card" id="q17" data-f="0">
+    <div class="qhead"><span class="qno">問17</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">債務不履行および契約の解除に関する次の記述のうち、最も適切でないものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">債務者の責めに帰すべき事由による履行不能の場合、債権者は損害賠償を請求できる。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">イ</span><span class="ctxt">契約を解除するためには、債務者の責めに帰すべき事由が常に必要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">履行遅滞の場合、債権者は相当の期間を定めて催告し、期間内に履行がなければ解除できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">契約が解除されると、各当事者は相手方を原状に復させる義務を負う。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>イ</strong></p>
+      <p class="explain">現行民法では解除に債務者の帰責事由は不要（債権者に帰責事由がある場合は解除不可）。よって『常に必要』とするイが誤り。</p>
+      <p class="ref">根拠：民法541条・542条（契約の解除）</p>
+    </div>
+  </article>
+  <article class="card" id="q18" data-f="0">
+    <div class="qhead"><span class="qno">問18</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">履行遅滞に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">履行が可能であるのに、債務者が正当な理由なく履行期を過ぎても履行しないことを履行遅滞という。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">履行遅滞とは、履行が不可能になることをいう。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">履行遅滞があっても、債権者は一切の請求ができない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">履行期が到来していなくても、履行遅滞は成立する。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">履行が可能なのに正当な理由なく履行期を過ぎても履行しない状態を履行遅滞という。履行が不可能になるのは履行不能。</p>
+      <p class="ref">根拠：民法412条・415条（履行遅滞）</p>
+    </div>
+  </article>
+  <article class="card" id="q19" data-f="0">
+    <div class="qhead"><span class="qno">問19</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">危険負担に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">売買の目的物が引渡し前に当事者双方の責めに帰さない事由で滅失しても、買主は代金全額を支払う必要がある。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">イ</span><span class="ctxt">売買の目的物が引渡し前に当事者双方の責めに帰さない事由で滅失した場合、買主は代金の支払いを拒むことができる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">目的物が滅失しても、契約は当然に有効に存続し代金債務に影響しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">危険負担は、贈与契約に特有の問題である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>イ</strong></p>
+      <p class="explain">引渡し前に双方の責めに帰さない事由で目的物が滅失した場合、買主は反対給付（代金）の履行を拒める（民法536条1項）。</p>
+      <p class="ref">根拠：民法536条1項（危険負担）</p>
+    </div>
+  </article>
+  <article class="card" id="q20" data-f="0">
+    <div class="qhead"><span class="qno">問20</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">弁済に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">債務の弁済は、原則として第三者もすることができる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">債務の弁済は、債務者本人以外は一切できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">弁済をしても、債務は消滅しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">弁済は、必ず債権者の住所地で行わなければならず例外はない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">弁済は原則として第三者もできる（民法474条）。正当な利益のない第三者は債務者の意思に反して弁済できない等の例外がある。</p>
+      <p class="ref">根拠：民法474条（第三者の弁済）</p>
+    </div>
+  </article>
+  <article class="card" id="q21" data-f="0">
+    <div class="qhead"><span class="qno">問21</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">相殺に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">当事者双方が互いに同種の債権を有し、ともに弁済期にあるときは、原則として相殺できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">相殺をするには、必ず相手方の同意が必要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">相殺は、債権の種類が異なっていても自由にできる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">相殺をしても、双方の債務はいずれも消滅しない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">互いに同種の目的の債務を負担し双方が弁済期にあるとき、一方的意思表示で対当額の相殺ができる（民法505条・506条）。</p>
+      <p class="ref">根拠：民法505条（相殺）</p>
+    </div>
+  </article>
+  <article class="card" id="q22" data-f="0">
+    <div class="qhead"><span class="qno">問22</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">債権譲渡に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">指名債権の譲渡を債務者に対抗するには、譲渡人からの通知または債務者の承諾が必要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">債権は、性質上いかなるものも譲渡できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">債権譲渡には、常に債務者の同意が必要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">債権譲渡は口頭の合意では一切効力を生じない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">債権は原則譲渡でき、債務者対抗要件は譲渡人からの通知または債務者の承諾（民法466条・467条）。</p>
+      <p class="ref">根拠：民法467条（債権譲渡の対抗要件）</p>
+    </div>
+  </article>
+  <article class="card" id="q23" data-f="0">
+    <div class="qhead"><span class="qno">問23</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">契約不適合責任に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">引き渡された目的物が契約内容に適合しない場合、買主は履行の追完を請求できることがある。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">目的物に欠陥があっても、買主は一切の救済を受けられない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">契約不適合があっても、代金減額は一切認められない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">契約不適合責任は、贈与契約にのみ認められる。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">目的物が種類・品質・数量に関し契約内容に適合しないとき、買主は追完請求・代金減額・損害賠償・解除をなしうる（民法562条以下）。</p>
+      <p class="ref">根拠：民法562条（契約不適合・追完請求）</p>
+    </div>
+  </article>
+  <article class="card" id="q24" data-f="0">
+    <div class="qhead"><span class="qno">問24</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">売買契約における手付に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">買主が交付した手付は、特約がなくても常に違約罰として扱われる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">相手方が履行に着手した後でも、買主は手付を放棄して契約を解除できる。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">ウ</span><span class="ctxt">解約手付が交付された場合、買主は手付を放棄し、売主は手付の倍額を現実に提供して解除できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">手付が交付されると、当事者は一切契約を解除できなくなる。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ウ</strong></p>
+      <p class="explain">手付は反対の特約がなければ解約手付と推定され、相手方が履行に着手するまで、買主は手付放棄、売主は倍額の現実提供で解除できる（民法557条）。</p>
+      <p class="ref">根拠：民法557条（手付）</p>
+    </div>
+  </article>
+  <article class="card" id="q25" data-f="0">
+    <div class="qhead"><span class="qno">問25</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">賃貸借契約に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">賃借人は、賃借物を善良な管理者の注意をもって保管する義務を負う。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">賃借人は、賃借物をどのように扱っても責任を負わない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">賃貸人は、賃借物を使用させる義務を負わない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">賃貸借では、賃料を支払う義務はない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">賃借人は善管注意義務をもって賃借物を保管し、契約・物の性質に従った使用収益をする義務を負う。</p>
+      <p class="ref">根拠：民法400条（善管注意義務）</p>
+    </div>
+  </article>
+  <article class="card" id="q26" data-f="0">
+    <div class="qhead"><span class="qno">問26</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">賃借権の譲渡・転貸に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">賃借人は、賃貸人の承諾を得なければ、賃借権の譲渡や賃借物の転貸をすることができない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">賃借人は、賃貸人に無断で自由に転貸できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">転貸には、いかなる場合も承諾は不要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">賃借権は、性質上一切譲渡できない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">賃借人は賃貸人の承諾なく賃借権の譲渡・転貸ができず、無断で第三者に使用収益させた場合、賃貸人は原則解除できる（民法612条）。</p>
+      <p class="ref">根拠：民法612条（賃借権の譲渡・転貸）</p>
+    </div>
+  </article>
+  <article class="card" id="q27" data-f="0">
+    <div class="qhead"><span class="qno">問27</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">委任契約に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">受任者は、委任の本旨に従い、善良な管理者の注意をもって委任事務を処理する義務を負う。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">受任者は、自己の財産と同程度の注意で足りる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">委任契約では、受任者は特約がなくても当然に報酬を請求できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">委任は、当事者の一方からは解除できない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">受任者は善管注意義務を負う（民法644条）。委任は原則無償で、各当事者はいつでも解除できる（648条・651条）。</p>
+      <p class="ref">根拠：民法644条（受任者の善管注意義務）</p>
+    </div>
+  </article>
+  <article class="card" id="q28" data-f="0">
+    <div class="qhead"><span class="qno">問28</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">請負契約に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">請負契約では、請負人は仕事を完成する義務を負い、注文者は仕事の結果に対して報酬を支払う。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">請負人は、仕事を完成しなくても当然に報酬全額を請求できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">請負契約では、注文者は報酬を支払う義務を負わない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">請負は、必ず書面によらなければ成立しない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">請負は仕事の完成を目的とし、請負人は完成義務、注文者は結果に対する報酬支払義務を負う（民法632条）。</p>
+      <p class="ref">根拠：民法632条（請負）</p>
+    </div>
+  </article>
+  <article class="card" id="q29" data-f="0">
+    <div class="qhead"><span class="qno">問29</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">不法行為に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">故意または過失によって他人の権利等を侵害した者は、これによって生じた損害を賠償する責任を負う。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">他人に損害を与えても、故意がなければ一切責任を負わない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">不法行為責任は、契約関係がなければ成立しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">不法行為による損害賠償請求権には、時効による消滅はない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">故意・過失により他人の権利・法律上保護される利益を侵害した者は損害賠償責任を負う（民法709条）。</p>
+      <p class="ref">根拠：民法709条（不法行為）</p>
+    </div>
+  </article>
+  <article class="card" id="q30" data-f="0">
+    <div class="qhead"><span class="qno">問30</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">使用者責任に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">被用者が事業の執行について第三者に損害を加えた場合、使用者も損害賠償責任を負うことがある。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">使用者は、被用者の行為について一切責任を負わない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">使用者責任が成立すると、被用者本人は責任を免れる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">使用者責任は、被用者に故意がある場合に限り成立する。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">ある事業のために他人を使用する者は、被用者が事業の執行について第三者に加えた損害を賠償する責任を負う（民法715条）。</p>
+      <p class="ref">根拠：民法715条（使用者責任）</p>
+    </div>
+  </article>
+  <article class="card" id="q31" data-f="0">
+    <div class="qhead"><span class="qno">問31</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">不動産の物権変動に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">不動産に関する物権の得喪・変更は、登記をしなければ第三者に対抗できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">不動産物権変動は、登記がなくても常に第三者に対抗できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">不動産の所有権は、引渡しによって対抗要件を備える。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">物権変動には、対抗要件という考え方は存在しない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">不動産物権変動の対抗要件は登記である（民法177条）。</p>
+      <p class="ref">根拠：民法177条（不動産物権変動の対抗要件）</p>
+    </div>
+  </article>
+  <article class="card" id="q32" data-f="0">
+    <div class="qhead"><span class="qno">問32</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">動産の物権変動・即時取得に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">取引行為により平穏・公然・善意・無過失で動産の占有を始めた者は、原則としてその動産について権利を取得する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">動産の取引では、相手が無権利者なら買主は常に権利を取得できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">即時取得は、不動産について認められる制度である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">動産の譲渡には、対抗要件は不要である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">取引行為により平穏・公然・善意・無過失で占有を始めた者は即時取得しうる（民法192条）。動産物権変動の対抗要件は引渡し（178条）。</p>
+      <p class="ref">根拠：民法192条（即時取得）</p>
+    </div>
+  </article>
+  <article class="card" id="q33" data-f="0">
+    <div class="qhead"><span class="qno">問33</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">留置権に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">他人の物の占有者は、その物に関して生じた債権を有するときは、弁済を受けるまでその物を留置できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">留置権は、当事者の合意がなければ一切成立しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">留置権者は、留置物を自由に処分して換価できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">物に関して生じた債権でなくても、留置権を主張できる。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">他人の物の占有者がその物に関して生じた債権を有するとき、弁済を受けるまで留置できる法定担保物権（民法295条）。</p>
+      <p class="ref">根拠：民法295条（留置権）</p>
+    </div>
+  </article>
+  <article class="card" id="q34" data-f="0">
+    <div class="qhead"><span class="qno">問34</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">質権に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">質権の設定は、債権者にその目的物を引き渡すことによって効力を生じる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">質権は、目的物の占有を移転せずに設定できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">質権者は、優先弁済を受けることができない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">質権は、不動産にのみ設定できる。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">質権は目的物の引渡しで効力を生じる占有担保で、優先弁済権を持つ（民法342条以下）。占有を移転しないのは抵当権。</p>
+      <p class="ref">根拠：民法344条（質権の設定）</p>
+    </div>
+  </article>
+  <article class="card" id="q35" data-f="0">
+    <div class="qhead"><span class="qno">問35</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">抵当権に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">抵当権を設定するには、債権者に目的物の占有を移転しなければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">抵当権は、被担保債権が弁済によって消滅しても独立して存続する。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">ウ</span><span class="ctxt">抵当権は、目的物の占有を設定者にとどめたまま設定できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">1つの不動産には、1個の抵当権しか設定できない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ウ</strong></p>
+      <p class="explain">抵当権は非占有担保で、占有を設定者にとどめたまま設定できる。債権が消滅すれば抵当権も消滅し（付従性）、順位を付して複数設定もできる。</p>
+      <p class="ref">根拠：民法369条（抵当権）</p>
+    </div>
+  </article>
+  <article class="card" id="q36" data-f="0">
+    <div class="qhead"><span class="qno">問36</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">保証に関する次の記述のうち、最も適切でないものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">保証契約は、書面でしなければその効力を生じない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">連帯保証人は、催告の抗弁権および検索の抗弁権を有しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">主たる債務が消滅すれば、保証債務も消滅する。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">エ</span><span class="ctxt">通常の保証人は、債権者から請求を受けても、まず主たる債務者に催告するよう求めることはできない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>エ</strong></p>
+      <p class="explain">通常の保証人は催告の抗弁権を有し、まず主債務者に請求するよう求められる。よってエが誤り。保証契約は書面が必要（民法446条）。</p>
+      <p class="ref">根拠：民法446条・452条（保証・催告の抗弁権）</p>
+    </div>
+  </article>
+  <article class="card" id="q37" data-f="0">
+    <div class="qhead"><span class="qno">問37</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">法定利率に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">民法上の法定利率は、3年ごとに見直される変動制が採用されている。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">法定利率は、年5%で固定されている。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">法定利率という制度は、現行民法には存在しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">法定利率は、当事者が自由に決められ法律上の定めはない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">改正民法により法定利率は変動制となり、当初年3%、以後3年ごとに見直される（民法404条）。</p>
+      <p class="ref">根拠：民法404条（法定利率）</p>
+    </div>
+  </article>
+  <article class="card" id="q38" data-f="0">
+    <div class="qhead"><span class="qno">問38</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">定型約款に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">定型約款を契約内容とする旨の合意等があれば、原則として個別条項にも合意したものとみなされる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">約款は、いかなる場合も契約内容にならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">定型約款は、相手方の個別の同意がなければ一切効力を生じない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">定型約款の内容は、一切変更できない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">定型取引で定型約款を契約内容とする旨の合意等があれば、原則として個別条項に合意したものとみなされる（民法548条の2）。</p>
+      <p class="ref">根拠：民法548条の2（定型約款）</p>
+    </div>
+  </article>
+  <article class="card" id="q39" data-f="0">
+    <div class="qhead"><span class="qno">問39</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">債権者代位権に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">債権者は、自己の債権を保全するため必要があるときは、原則として債務者に属する権利を行使できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">債権者は、債務者の権利を一切行使できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">債権者代位権の行使には、必ず裁判所の許可が必要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">債権者代位権は、債権者自身の債権が消滅した後に行使する。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">債権者は自己の債権を保全するため必要があるとき、債務者に属する権利を代位行使できる（民法423条）。</p>
+      <p class="ref">根拠：民法423条（債権者代位権）</p>
+    </div>
+  </article>
+  <article class="card" id="q40" data-f="0">
+    <div class="qhead"><span class="qno">問40</span><span class="badge">民法・取引</span></div>
+    <p class="qtext">詐害行為取消権に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">債権者は、債務者が債権者を害することを知ってした行為の取消しを、裁判所に請求できることがある。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">債権者は、債務者の財産処分行為を一切問題にできない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">詐害行為取消権は、裁判外で自由に行使できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">詐害行為取消権の行使に、債務者の無資力は関係しない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">債権者は、債務者が債権者を害することを知ってした行為（詐害行為）の取消しを裁判所に請求できる（民法424条）。</p>
+      <p class="ref">根拠：民法424条（詐害行為取消権）</p>
+    </div>
+  </article><h2 class="field-head" data-f="1">会社の組織・運営（会社法）</h2>
+  <article class="card" id="q41" data-f="1">
+    <div class="qhead"><span class="qno">問41</span><span class="badge">会社法</span></div>
+    <p class="qtext">株式会社の機関に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">すべての株式会社は、株主総会と取締役を置かなければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">すべての株式会社は、取締役会を置かなければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">すべての株式会社は、監査役を置かなければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">株主総会は、会社の業務執行を日常的に決定する機関である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">株主総会と取締役は必置機関。取締役会・監査役は会社の選択や類型による。業務執行は取締役（取締役会・代表取締役）が担う。</p>
+      <p class="ref">根拠：会社法326条（株主総会・取締役の設置）</p>
+    </div>
+  </article>
+  <article class="card" id="q42" data-f="1">
+    <div class="qhead"><span class="qno">問42</span><span class="badge">会社法</span></div>
+    <p class="qtext">株主の責任に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">株式会社の株主は、その有する株式の引受価額を限度とする責任を負うにとどまる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">株式会社の株主は、会社の債務について無限責任を負う。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">株主は、会社が倒産すると個人財産で全額弁済する義務を負う。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">株主の責任の範囲は、定款で無限責任と定めるのが原則である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">株主は引受価額を限度とする有限責任を負うにとどまる（株主有限責任の原則、会社法104条）。</p>
+      <p class="ref">根拠：会社法104条（株主有限責任）</p>
+    </div>
+  </article>
+  <article class="card" id="q43" data-f="1">
+    <div class="qhead"><span class="qno">問43</span><span class="badge">会社法</span></div>
+    <p class="qtext">株式の譲渡に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">株式は原則として自由に譲渡できるが、定款で譲渡制限を定めることができる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">株式は、いかなる場合も譲渡できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">株式の譲渡には、常に取締役会の承認が必要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">譲渡制限株式という制度は存在しない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">株式譲渡自由の原則があるが、定款で全部または一部の株式に譲渡制限を付すことができる（会社法107条・108条）。</p>
+      <p class="ref">根拠：会社法127条・107条（株式譲渡自由・譲渡制限）</p>
+    </div>
+  </article>
+  <article class="card" id="q44" data-f="1">
+    <div class="qhead"><span class="qno">問44</span><span class="badge">会社法</span></div>
+    <p class="qtext">株式会社の成立に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">株式会社は、その本店の所在地において設立の登記をすることによって成立する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">株式会社は、定款を作成した時点で当然に成立する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">株式会社は、出資金を払い込めば登記なしに成立する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">会社の成立に、登記は関係しない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">株式会社は本店所在地で設立登記をすることによって成立する（会社法49条）。</p>
+      <p class="ref">根拠：会社法49条（設立登記）</p>
+    </div>
+  </article>
+  <article class="card" id="q45" data-f="1">
+    <div class="qhead"><span class="qno">問45</span><span class="badge">会社法</span></div>
+    <p class="qtext">株主総会に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">定時株主総会は、毎事業年度の終了後一定の時期に招集しなければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">株主総会は、取締役の業務執行の細目まですべてを決定する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">株主は、保有株式数にかかわらず各自1個の議決権を有する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">株主総会の招集は、必ず株主全員の同意が必要である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">定時株主総会は毎事業年度終了後の一定時期に招集する。議決権は原則1株1議決権、業務執行の細目は取締役等が決定する。</p>
+      <p class="ref">根拠：会社法296条（定時株主総会）</p>
+    </div>
+  </article>
+  <article class="card" id="q46" data-f="1">
+    <div class="qhead"><span class="qno">問46</span><span class="badge">会社法</span></div>
+    <p class="qtext">株主総会の普通決議に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">普通決議は、原則として議決権の過半数を有する株主が出席し、出席株主の議決権の過半数で成立する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">普通決議は、株主全員の同意がなければ成立しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">普通決議は、出席株主の3分の2以上で成立する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">普通決議には、定足数や賛成数の定めはない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">普通決議は原則として議決権の過半数を有する株主の出席（定款で軽減・排除可）と出席株主の議決権の過半数で成立（会社法309条1項）。</p>
+      <p class="ref">根拠：会社法309条1項（普通決議）</p>
+    </div>
+  </article>
+  <article class="card" id="q47" data-f="1">
+    <div class="qhead"><span class="qno">問47</span><span class="badge">会社法</span></div>
+    <p class="qtext">株主総会の特別決議に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">定款変更や合併などの重要事項は、原則として株主総会の特別決議で決定される。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">合併や定款変更も、普通決議で足りる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">特別決議は、取締役のみで決定できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">特別決議という決議方法は存在しない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">定款変更・合併・事業譲渡・解散など重要事項は特別決議（原則、出席議決権の3分の2以上）を要する（会社法309条2項）。</p>
+      <p class="ref">根拠：会社法309条2項（特別決議）</p>
+    </div>
+  </article>
+  <article class="card" id="q48" data-f="1">
+    <div class="qhead"><span class="qno">問48</span><span class="badge">会社法</span></div>
+    <p class="qtext">取締役の選任に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">取締役は、株主総会の決議によって選任される。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">取締役は、代表取締役が単独で選任する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">取締役は、債権者集会で選任される。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">取締役の選任に、株主総会は関与しない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">取締役は株主総会の決議によって選任される（会社法329条）。</p>
+      <p class="ref">根拠：会社法329条（取締役の選任）</p>
+    </div>
+  </article>
+  <article class="card" id="q49" data-f="1">
+    <div class="qhead"><span class="qno">問49</span><span class="badge">会社法</span></div>
+    <p class="qtext">取締役会・代表取締役に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">取締役会設置会社では、重要な業務執行の決定は取締役会が行い、代表取締役が会社を代表する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">取締役会設置会社でも、各取締役が単独で会社を代表するのが原則である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">代表取締役ではなく、株主総会が会社を代表する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">取締役会は、業務執行の決定を行えない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">取締役会設置会社では取締役会が重要な業務執行を決定し、代表取締役が業務を執行し会社を代表する（会社法362条・363条）。</p>
+      <p class="ref">根拠：会社法362条・363条（取締役会・代表取締役）</p>
+    </div>
+  </article>
+  <article class="card" id="q50" data-f="1">
+    <div class="qhead"><span class="qno">問50</span><span class="badge">会社法</span></div>
+    <p class="qtext">監査役に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">監査役は、取締役の職務の執行を監査する機関である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">監査役は、会社の業務執行を行う機関である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">監査役は、取締役の指揮命令に従って業務を行う。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">監査役は、株主総会を構成する機関である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">監査役は取締役の職務執行を監査する機関であり、独立性が求められる（会社法381条）。</p>
+      <p class="ref">根拠：会社法381条（監査役）</p>
+    </div>
+  </article>
+  <article class="card" id="q51" data-f="1">
+    <div class="qhead"><span class="qno">問51</span><span class="badge">会社法</span></div>
+    <p class="qtext">取締役の義務に関する次の記述のうち、最も適切でないものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">取締役が会社の事業の部類に属する取引をするには、原則として会社の承認が必要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">取締役が会社と利益相反取引をするには、原則として会社の承認が必要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">取締役は、任務を怠って会社に損害を与えた場合、損害賠償責任を負うことがある。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">エ</span><span class="ctxt">取締役は、会社の承認を得ることなく自由に会社と競業を行うことができる。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>エ</strong></p>
+      <p class="explain">取締役は競業避止義務・利益相反取引の規制を負い、これらには原則会社の承認が必要。よって『自由に競業できる』とするエが誤り。</p>
+      <p class="ref">根拠：会社法356条・365条（競業避止義務・利益相反取引）</p>
+    </div>
+  </article>
+  <article class="card" id="q52" data-f="1">
+    <div class="qhead"><span class="qno">問52</span><span class="badge">会社法</span></div>
+    <p class="qtext">取締役の利益相反取引に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">取締役が当事者として会社と取引をするには、原則として取締役会（または株主総会）の承認が必要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">取締役は、会社と自由に取引でき承認は不要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">利益相反取引は、承認によっても一切行えない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">利益相反取引の規制は、監査役にのみ適用される。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">取締役の利益相反取引には、取締役会設置会社では取締役会、それ以外では株主総会の承認が必要（会社法356条・365条）。</p>
+      <p class="ref">根拠：会社法356条・365条（利益相反取引）</p>
+    </div>
+  </article>
+  <article class="card" id="q53" data-f="1">
+    <div class="qhead"><span class="qno">問53</span><span class="badge">会社法</span></div>
+    <p class="qtext">取締役の報酬に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">取締役の報酬は、定款に定めがないときは株主総会の決議によって定める。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">取締役の報酬は、取締役が自由に決められる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">取締役の報酬は、債権者が決定する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">取締役の報酬について、会社法上の定めはない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">取締役の報酬等は定款または株主総会の決議で定める（会社法361条）。お手盛り防止のための規制。</p>
+      <p class="ref">根拠：会社法361条（取締役の報酬）</p>
+    </div>
+  </article>
+  <article class="card" id="q54" data-f="1">
+    <div class="qhead"><span class="qno">問54</span><span class="badge">会社法</span></div>
+    <p class="qtext">剰余金の配当に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">剰余金の配当は、分配可能額の範囲内で行わなければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">剰余金の配当は、財源に関係なく自由に行える。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">配当は、必ず毎月行わなければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">株式会社は、剰余金の配当をしてはならない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">剰余金の配当は分配可能額の範囲内で行う必要があり、これに反する配当は規制される（会社法461条）。</p>
+      <p class="ref">根拠：会社法461条（剰余金の配当・分配可能額）</p>
+    </div>
+  </article>
+  <article class="card" id="q55" data-f="1">
+    <div class="qhead"><span class="qno">問55</span><span class="badge">会社法</span></div>
+    <p class="qtext">株主代表訴訟に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">一定の要件を満たす株主は、会社に代わって取締役の責任を追及する訴えを提起できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">株主は、取締役の責任を追及する訴えを一切提起できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">株主代表訴訟は、株主全員の同意がなければ提起できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">株主代表訴訟は、取締役自身が提起する制度である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">一定の要件を満たす株主は会社に対し提訴を請求でき、一定期間内に提起されないとき自ら責任追及の訴えを提起できる（会社法847条）。</p>
+      <p class="ref">根拠：会社法847条（株主代表訴訟）</p>
+    </div>
+  </article>
+  <article class="card" id="q56" data-f="1">
+    <div class="qhead"><span class="qno">問56</span><span class="badge">会社法</span></div>
+    <p class="qtext">会社の法人格に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">会社は法人であり、法律の定めるところにより権利義務の主体となる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">会社は法人ではなく、構成員個人の集合にすぎない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">会社は、財産を所有することができない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">会社は、契約の当事者となることができない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">会社は法人であり（会社法3条）、権利義務の主体となる。</p>
+      <p class="ref">根拠：会社法3条（会社の法人格）</p>
+    </div>
+  </article>
+  <article class="card" id="q57" data-f="1">
+    <div class="qhead"><span class="qno">問57</span><span class="badge">会社法</span></div>
+    <p class="qtext">会社の種類に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">合名会社の社員は、全員が有限責任社員である。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">イ</span><span class="ctxt">合同会社の社員は、全員が有限責任社員である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">株式会社の株主は、会社の債務について無限責任を負う。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">持分会社には、株式会社が含まれる。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>イ</strong></p>
+      <p class="explain">合同会社は全員が有限責任社員。合名会社は全員無限責任、株主は有限責任、持分会社は合名・合資・合同会社の総称で株式会社は含まない。</p>
+      <p class="ref">根拠：会社法576条・104条（持分会社・有限責任社員）</p>
+    </div>
+  </article>
+  <article class="card" id="q58" data-f="1">
+    <div class="qhead"><span class="qno">問58</span><span class="badge">会社法</span></div>
+    <p class="qtext">合資会社に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">合資会社は、無限責任社員と有限責任社員とで構成される。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">合資会社は、有限責任社員のみで構成される。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">合資会社は、株式を発行して資金を集める会社である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">合資会社には、社員が1名しか認められない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">合資会社は無限責任社員と有限責任社員とで構成される持分会社である（会社法576条3項）。</p>
+      <p class="ref">根拠：会社法576条3項（合資会社）</p>
+    </div>
+  </article><h2 class="field-head" data-f="2">企業活動の規制（消費者保護・独禁・知財）</h2>
+  <article class="card" id="q59" data-f="2">
+    <div class="qhead"><span class="qno">問59</span><span class="badge">企業規制</span></div>
+    <p class="qtext">消費者契約法に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">事業者が重要事項について事実と異なることを告げ、消費者が誤認して契約した場合、消費者は契約を取り消すことができる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">消費者契約法は、事業者間の契約にも広く適用される。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">消費者に一方的に不利な不当条項も、契約に定めれば常に有効である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">消費者契約法による取消権には、期間の制限がない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">不実告知等により消費者が誤認して契約したとき取消しが認められる。同法は消費者・事業者間の契約に適用され、不当条項は無効、取消権には期間制限がある。</p>
+      <p class="ref">根拠：消費者契約法4条（誤認による取消し）</p>
+    </div>
+  </article>
+  <article class="card" id="q60" data-f="2">
+    <div class="qhead"><span class="qno">問60</span><span class="badge">企業規制</span></div>
+    <p class="qtext">消費者契約法上の不当条項に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">事業者の債務不履行による損害賠償責任の全部を免除する条項は、無効である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">消費者契約では、どのような条項も常に有効である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">事業者の責任を全部免除する条項も有効である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">不当条項規制は、事業者間契約に適用される。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">事業者の損害賠償責任を全部免除する条項などは無効とされる（消費者契約法8条等）。</p>
+      <p class="ref">根拠：消費者契約法8条（不当条項の無効）</p>
+    </div>
+  </article>
+  <article class="card" id="q61" data-f="2">
+    <div class="qhead"><span class="qno">問61</span><span class="badge">企業規制</span></div>
+    <p class="qtext">特定商取引法のクーリング・オフに関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">訪問販売では、法定書面を受け取った日から起算して8日間以内であれば、書面等により契約を解除できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">クーリング・オフをするには、必ず事業者の同意が必要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">クーリング・オフをしても、消費者は違約金を支払わなければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">通信販売には、必ずクーリング・オフ制度が適用される。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">訪問販売のクーリング・オフ期間は法定書面交付日から8日間。消費者の一方的意思表示で行え、違約金は不要。通信販売には適用がない。</p>
+      <p class="ref">根拠：特定商取引法9条（訪問販売のクーリング・オフ）</p>
+    </div>
+  </article>
+  <article class="card" id="q62" data-f="2">
+    <div class="qhead"><span class="qno">問62</span><span class="badge">企業規制</span></div>
+    <p class="qtext">特定商取引法の対象取引に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">特定商取引法は、訪問販売・電話勧誘販売・連鎖販売取引など、トラブルを生じやすい取引類型を規制している。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">特定商取引法は、店舗での通常の対面販売のみを規制する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">特定商取引法は、事業者間の取引のみを対象とする。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">特定商取引法には、規制対象となる取引類型の定めはない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">特定商取引法は訪問販売・通信販売・電話勧誘販売・連鎖販売取引・特定継続的役務提供・業務提供誘引販売取引・訪問購入を規制する。</p>
+      <p class="ref">根拠：特定商取引法（規制対象取引）</p>
+    </div>
+  </article>
+  <article class="card" id="q63" data-f="2">
+    <div class="qhead"><span class="qno">問63</span><span class="badge">企業規制</span></div>
+    <p class="qtext">割賦販売法に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">割賦販売法は、商品代金を分割して支払う割賦販売などの取引を規制している。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">割賦販売法は、現金一括払いの取引のみを規制する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">割賦販売法は、不動産の賃貸借を規制する法律である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">割賦販売法は、労働条件を規制する法律である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">割賦販売法は割賦販売やクレジット（信用購入あっせん）などの取引を規制し、消費者保護を図る。</p>
+      <p class="ref">根拠：割賦販売法（割賦販売・信用購入あっせん）</p>
+    </div>
+  </article>
+  <article class="card" id="q64" data-f="2">
+    <div class="qhead"><span class="qno">問64</span><span class="badge">企業規制</span></div>
+    <p class="qtext">製造物責任法（PL法）に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">被害者は、製造業者の過失を証明しなければ損害賠償を請求できない。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">イ</span><span class="ctxt">製造物の欠陥により損害が生じた場合、製造業者は過失がなくても損害賠償責任を負うことがある。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">製造物責任法は、不動産にも当然に適用される。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">製造物責任は、欠陥のある製品そのものの損害のみを対象とする。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>イ</strong></p>
+      <p class="explain">PL法は欠陥により損害が生じた場合の無過失責任を定める。対象は製造・加工された動産で、生命・身体・他の財産への拡大損害が対象。</p>
+      <p class="ref">根拠：製造物責任法3条（無過失責任）</p>
+    </div>
+  </article>
+  <article class="card" id="q65" data-f="2">
+    <div class="qhead"><span class="qno">問65</span><span class="badge">企業規制</span></div>
+    <p class="qtext">製造物責任の責任主体に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">製造物責任を負うのは、その製造物を製造・加工・輸入した事業者などである。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">製造物責任を負うのは、その製品を購入した消費者である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">製造物責任は、運送業者のみが負う。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">製造物責任を負う者は、法律上特定されていない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">製造業者・加工業者・輸入業者や、製造業者と誤認させる表示をした者などが責任を負う（製造物責任法2条3項）。</p>
+      <p class="ref">根拠：製造物責任法2条3項（製造業者等）</p>
+    </div>
+  </article>
+  <article class="card" id="q66" data-f="2">
+    <div class="qhead"><span class="qno">問66</span><span class="badge">企業規制</span></div>
+    <p class="qtext">特許権に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">特許権の存続期間は、原則として特許出願の日から20年である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">著作権は、登録しなければ一切発生しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">商標権は、一度登録すれば更新できず必ず消滅する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">著作権の保護期間は、原則として著作者の死後10年である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">特許権の存続期間は原則として特許出願日から20年。著作権は無方式で発生し死後70年保護、商標権は更新可能。</p>
+      <p class="ref">根拠：特許法67条（特許権の存続期間）</p>
+    </div>
+  </article>
+  <article class="card" id="q67" data-f="2">
+    <div class="qhead"><span class="qno">問67</span><span class="badge">企業規制</span></div>
+    <p class="qtext">著作権に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">著作権は、著作物の創作と同時に発生し、登録を要しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">著作権は、文化庁に登録しなければ発生しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">著作権は、出願・審査を経て初めて発生する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">著作権の保護期間は、創作から5年で終了する。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">著作権は無方式主義により創作と同時に発生する。保護期間は原則として著作者の死後70年。</p>
+      <p class="ref">根拠：著作権法17条・51条（無方式主義・保護期間）</p>
+    </div>
+  </article>
+  <article class="card" id="q68" data-f="2">
+    <div class="qhead"><span class="qno">問68</span><span class="badge">企業規制</span></div>
+    <p class="qtext">商標権に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">商標権の存続期間は設定登録から10年であるが、更新登録により更新できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">商標権は、一度登録すれば永久に更新不要で存続する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">商標権は、更新できず10年で必ず消滅する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">商標権の存続期間は、登録から70年である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">商標権の存続期間は設定登録から10年だが、更新登録を繰り返すことで半永久的に維持できる。</p>
+      <p class="ref">根拠：商標法19条（存続期間・更新）</p>
+    </div>
+  </article>
+  <article class="card" id="q69" data-f="2">
+    <div class="qhead"><span class="qno">問69</span><span class="badge">企業規制</span></div>
+    <p class="qtext">特許の要件に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">特許権は、新規性や進歩性などの要件を満たす発明について与えられる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">特許権は、出願すればどのような発明にも当然与えられる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">特許権は、デザイン（意匠）を保護する権利である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">特許権は、商品の名称（商標）を保護する権利である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">特許は、産業上利用でき、新規性・進歩性等の要件を満たす発明に与えられる。</p>
+      <p class="ref">根拠：特許法29条（特許の要件）</p>
+    </div>
+  </article>
+  <article class="card" id="q70" data-f="2">
+    <div class="qhead"><span class="qno">問70</span><span class="badge">企業規制</span></div>
+    <p class="qtext">意匠権に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">意匠権は、物品等の形状・模様・色彩などのデザインを保護する権利である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">意匠権は、発明を保護する権利である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">意匠権は、著作物を保護する権利である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">意匠権は、営業秘密を保護する権利である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">意匠権は物品・建築物・画像のデザイン（意匠）を保護する。</p>
+      <p class="ref">根拠：意匠法2条・20条（意匠権）</p>
+    </div>
+  </article>
+  <article class="card" id="q71" data-f="2">
+    <div class="qhead"><span class="qno">問71</span><span class="badge">企業規制</span></div>
+    <p class="qtext">不正競争防止法に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">不正競争防止法は、他人の周知な商品等表示と混同を生じさせる行為や営業秘密の侵害などを規制している。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">不正競争防止法は、労働者の賃金を規制する法律である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">不正競争防止法は、特許の出願手続を定める法律である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">不正競争防止法は、消費者の信用情報を保護する法律である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">不正競争防止法は周知・著名表示の冒用、商品形態の模倣、営業秘密の侵害などの不正競争を規制する。</p>
+      <p class="ref">根拠：不正競争防止法2条（不正競争）</p>
+    </div>
+  </article>
+  <article class="card" id="q72" data-f="2">
+    <div class="qhead"><span class="qno">問72</span><span class="badge">企業規制</span></div>
+    <p class="qtext">独占禁止法に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">独占禁止法は、私的独占、不当な取引制限（カルテル）、不公正な取引方法などを禁止している。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">独占禁止法は、事業者の自由な共同行為をすべて推奨している。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">独占禁止法は、知的財産の出願手続を定める法律である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">独占禁止法は、労働組合の活動を規制する法律である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">独占禁止法は私的独占・不当な取引制限・不公正な取引方法を禁止し、公正かつ自由な競争を促進する。</p>
+      <p class="ref">根拠：独占禁止法3条・19条（私的独占・不公正な取引方法）</p>
+    </div>
+  </article>
+  <article class="card" id="q73" data-f="2">
+    <div class="qhead"><span class="qno">問73</span><span class="badge">企業規制</span></div>
+    <p class="qtext">独占禁止法の運用機関に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">独占禁止法の運用は、公正取引委員会が担っている。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">独占禁止法の運用は、財務省が単独で担っている。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">独占禁止法には、運用を担当する機関の定めがない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">独占禁止法の運用は、各企業の自主判断に委ねられている。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">独占禁止法の運用は、独立行政委員会である公正取引委員会が担う。</p>
+      <p class="ref">根拠：独占禁止法（公正取引委員会による運用）</p>
+    </div>
+  </article>
+  <article class="card" id="q74" data-f="2">
+    <div class="qhead"><span class="qno">問74</span><span class="badge">企業規制</span></div>
+    <p class="qtext">カルテルに関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">複数の事業者が共同して商品の価格を取り決める行為（価格カルテル）は、原則として独占禁止法に違反する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">価格カルテルは、競争を促進するため独占禁止法上推奨される。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">カルテルは、事業者間の自由な取引として常に適法である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">カルテルの規制は、輸入品にのみ適用される。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">複数事業者が共同して価格・数量等を取り決める行為は不当な取引制限（カルテル）として原則禁止される。</p>
+      <p class="ref">根拠：独占禁止法2条6項（不当な取引制限・カルテル）</p>
+    </div>
+  </article>
+  <article class="card" id="q75" data-f="2">
+    <div class="qhead"><span class="qno">問75</span><span class="badge">企業規制</span></div>
+    <p class="qtext">下請法に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">下請代金支払遅延等防止法は、親事業者による下請代金の支払遅延や不当な減額などを禁止している。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">下請法は、下請事業者の義務のみを定めた法律である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">下請法は、親事業者を保護するための法律である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">下請法には、親事業者の禁止行為の定めはない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">下請法は親事業者の受領拒否・支払遅延・不当な減額・返品などを禁止し、下請事業者を保護する。</p>
+      <p class="ref">根拠：下請法（下請代金支払遅延等防止法）</p>
+    </div>
+  </article>
+  <article class="card" id="q76" data-f="2">
+    <div class="qhead"><span class="qno">問76</span><span class="badge">企業規制</span></div>
+    <p class="qtext">景品表示法に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">景品表示法は、実際より著しく優良・有利と誤認させる不当表示を禁止している。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">景品表示法は、すべての広告表現を一律に禁止する法律である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">景品表示法は、事業者間の価格交渉を規制する法律である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">景品表示法は、商品の表示を一切規制しない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">景品表示法は優良誤認表示・有利誤認表示などの不当表示や過大な景品類の提供を規制する。</p>
+      <p class="ref">根拠：景品表示法5条（不当表示の禁止）</p>
+    </div>
+  </article>
+  <article class="card" id="q77" data-f="2">
+    <div class="qhead"><span class="qno">問77</span><span class="badge">企業規制</span></div>
+    <p class="qtext">個人情報保護法上の利用目的に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">個人情報取扱事業者は、個人情報を取り扱うにあたり、その利用目的をできる限り特定しなければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">個人情報は、利用目的を定めずに自由に利用してよい。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">個人情報の利用目的は、後から無制限に変更できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">個人情報取扱事業者には、利用目的に関する義務はない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">個人情報取扱事業者は利用目的をできる限り特定し、原則その範囲内で取り扱う（個人情報保護法17条・18条）。</p>
+      <p class="ref">根拠：個人情報保護法17条（利用目的の特定）</p>
+    </div>
+  </article>
+  <article class="card" id="q78" data-f="2">
+    <div class="qhead"><span class="qno">問78</span><span class="badge">企業規制</span></div>
+    <p class="qtext">個人データの第三者提供に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">個人情報取扱事業者は、原則としてあらかじめ本人の同意を得ないで個人データを第三者に提供してはならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">個人データは、本人の同意なく自由に第三者へ提供できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">第三者提供に関する規制は、個人情報保護法には存在しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">個人データの第三者提供は、いかなる場合も認められない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">個人データの第三者提供には原則として本人の同意が必要である（個人情報保護法27条）。</p>
+      <p class="ref">根拠：個人情報保護法27条（第三者提供の制限）</p>
+    </div>
+  </article><h2 class="field-head" data-f="3">企業と従業員の関係（労働法）</h2>
+  <article class="card" id="q79" data-f="3">
+    <div class="qhead"><span class="qno">問79</span><span class="badge">労働法</span></div>
+    <p class="qtext">労働基準法に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">法定労働時間は、原則として1日8時間・1週40時間である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">使用者は、労働者に休憩を与える義務を一切負わない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">労働基準法を下回る労働条件も、すべて有効である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">使用者は、いかなる場合も時間外労働をさせることができない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">法定労働時間は原則1日8時間・1週40時間。労働時間に応じ休憩を与える義務があり、三六協定により時間外労働も可能。</p>
+      <p class="ref">根拠：労働基準法32条（法定労働時間）</p>
+    </div>
+  </article>
+  <article class="card" id="q80" data-f="3">
+    <div class="qhead"><span class="qno">問80</span><span class="badge">労働法</span></div>
+    <p class="qtext">労働契約に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">労働契約は、労働者が使用者に使用されて労働し、使用者が賃金を支払うことを内容とする契約である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">労働契約は、労働者が使用者に金銭を支払う契約である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">労働契約は、無償で労務を提供する契約である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">労働契約は、書面によらなければ一切成立しない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">労働契約は労働者の労務提供と使用者の賃金支払を内容とし、合意により成立する（労働契約法6条）。書面は成立要件ではない。</p>
+      <p class="ref">根拠：労働契約法6条（労働契約の成立）</p>
+    </div>
+  </article>
+  <article class="card" id="q81" data-f="3">
+    <div class="qhead"><span class="qno">問81</span><span class="badge">労働法</span></div>
+    <p class="qtext">就業規則に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">常時10人以上の労働者を使用する使用者は、就業規則を作成し、行政官庁に届け出なければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">就業規則は、労働者数にかかわらず作成義務はない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">就業規則は、作成しても労働者に周知する必要はない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">就業規則は、行政官庁の許可がなければ効力を生じない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">常時10人以上を使用する使用者は就業規則を作成し労基署長に届け出る義務を負う。労働者への周知も必要（労基法89条・106条）。</p>
+      <p class="ref">根拠：労働基準法89条（就業規則の作成・届出）</p>
+    </div>
+  </article>
+  <article class="card" id="q82" data-f="3">
+    <div class="qhead"><span class="qno">問82</span><span class="badge">労働法</span></div>
+    <p class="qtext">賃金の支払いに関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">賃金は、原則として通貨で、直接労働者に、その全額を支払わなければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">賃金は、使用者が任意の物品で支払ってよい。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">賃金は、労働者の代理人にまとめて支払うのが原則である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">賃金は、毎月支払う必要はなく年1回でよい。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">賃金支払いには通貨払・直接払・全額払・毎月1回以上・一定期日払の5原則がある（労基法24条）。</p>
+      <p class="ref">根拠：労働基準法24条（賃金支払いの5原則）</p>
+    </div>
+  </article>
+  <article class="card" id="q83" data-f="3">
+    <div class="qhead"><span class="qno">問83</span><span class="badge">労働法</span></div>
+    <p class="qtext">時間外労働（三六協定）に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">使用者が法定労働時間を超えて労働させるには、労使協定（三六協定）の締結・届出が必要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">使用者は、協定なしに自由に時間外労働をさせられる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">時間外労働は、いかなる場合も認められない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">三六協定は、締結すれば届出は不要である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">法定労働時間を超える時間外・休日労働には三六協定の締結と行政官庁への届出が必要（労基法36条）。</p>
+      <p class="ref">根拠：労働基準法36条（時間外労働・三六協定）</p>
+    </div>
+  </article>
+  <article class="card" id="q84" data-f="3">
+    <div class="qhead"><span class="qno">問84</span><span class="badge">労働法</span></div>
+    <p class="qtext">年次有給休暇に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">雇入れの日から6か月間継続勤務し、全労働日の8割以上出勤した労働者には、年次有給休暇が与えられる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">年次有給休暇は、勤続年数にかかわらず与えられない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">年次有給休暇は、使用者の同意がなければ一切取得できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">パートタイム労働者には、年次有給休暇は一切与えられない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">6か月継続勤務し全労働日の8割以上出勤した労働者に年休が付与され、所定労働日数に応じパートにも比例付与される（労基法39条）。</p>
+      <p class="ref">根拠：労働基準法39条（年次有給休暇）</p>
+    </div>
+  </article>
+  <article class="card" id="q85" data-f="3">
+    <div class="qhead"><span class="qno">問85</span><span class="badge">労働法</span></div>
+    <p class="qtext">解雇の予告に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="0"><span class="lab">ア</span><span class="ctxt">使用者は、客観的に合理的な理由を欠き社会通念上相当でない解雇でも自由にできる。</span></button></li><li><button type="button" class="choice" data-correct="1"><span class="lab">イ</span><span class="ctxt">使用者が労働者を解雇する場合、原則として少なくとも30日前に予告するか、30日分以上の平均賃金を支払わなければならない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">就業規則は、作成しても労働者に周知する必要はない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">解雇は、使用者が口頭で告げれば理由を問わず常に有効である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>イ</strong></p>
+      <p class="explain">解雇には原則30日前の予告か30日分以上の平均賃金（解雇予告手当）が必要（労基法20条）。合理性・相当性を欠く解雇は無効。</p>
+      <p class="ref">根拠：労働基準法20条（解雇の予告）</p>
+    </div>
+  </article>
+  <article class="card" id="q86" data-f="3">
+    <div class="qhead"><span class="qno">問86</span><span class="badge">労働法</span></div>
+    <p class="qtext">解雇権濫用法理に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">客観的に合理的な理由を欠き、社会通念上相当と認められない解雇は、無効となる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">使用者は、理由を問わず自由に労働者を解雇できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">解雇は、使用者の意思表示があれば常に有効である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">解雇の有効性は、法律上一切問題とされない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">解雇は客観的に合理的な理由を欠き社会通念上相当と認められない場合、権利濫用として無効となる（労働契約法16条）。</p>
+      <p class="ref">根拠：労働契約法16条（解雇権濫用法理）</p>
+    </div>
+  </article>
+  <article class="card" id="q87" data-f="3">
+    <div class="qhead"><span class="qno">問87</span><span class="badge">労働法</span></div>
+    <p class="qtext">業務上の負傷と解雇制限に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">使用者は、労働者が業務上負傷し療養のため休業する期間およびその後30日間は、原則として解雇できない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">業務上の負傷で休業中の労働者も、いつでも自由に解雇できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">解雇制限は、私傷病による休業にのみ適用される。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">解雇制限の規定は、労働基準法には存在しない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">業務上の負傷・疾病の療養のため休業する期間とその後30日間は、原則として解雇が制限される（労基法19条）。</p>
+      <p class="ref">根拠：労働基準法19条（解雇制限）</p>
+    </div>
+  </article>
+  <article class="card" id="q88" data-f="3">
+    <div class="qhead"><span class="qno">問88</span><span class="badge">労働法</span></div>
+    <p class="qtext">労働組合法に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">労働組合法は、労働者が労働組合を組織し、団体交渉などを行うことを保障している。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">労働組合法は、労働組合の結成を禁止している。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">労働組合法は、使用者の利益を保護するための法律である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">団体交渉は、法律上保障されていない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">労働組合法は労働者の団結権・団体交渉権・団体行動権を具体化し、不当労働行為を禁止する。</p>
+      <p class="ref">根拠：労働組合法（団結権・団体交渉権の保障）</p>
+    </div>
+  </article><h2 class="field-head" data-f="4">紛争の解決・手形小切手</h2>
+  <article class="card" id="q89" data-f="4">
+    <div class="qhead"><span class="qno">問89</span><span class="badge">紛争・手形</span></div>
+    <p class="qtext">民事上の紛争解決手続に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">少額訴訟は、原則として60万円以下の金銭の支払いを求める請求について利用できる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">民事調停は、裁判所が一方的に解決内容を強制する手続である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">支払督促は、裁判所が証拠調べを経て判決を行う手続である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">確定判決を得ても、強制執行は一切できない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">少額訴訟は60万円以下の金銭支払請求について原則1回の期日で審理する簡易な手続である。</p>
+      <p class="ref">根拠：民事訴訟法368条（少額訴訟）</p>
+    </div>
+  </article>
+  <article class="card" id="q90" data-f="4">
+    <div class="qhead"><span class="qno">問90</span><span class="badge">紛争・手形</span></div>
+    <p class="qtext">民事調停に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">民事調停は、調停委員会の関与のもとで当事者の合意による解決を図る手続である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">民事調停は、裁判所が一方的に結論を押し付ける手続である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">民事調停では、当事者の合意は必要とされない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">民事調停は、刑事事件を対象とする手続である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">民事調停は調停委員会の仲介により当事者の話合いと合意で紛争解決を図る手続である。</p>
+      <p class="ref">根拠：民事調停法（民事調停）</p>
+    </div>
+  </article>
+  <article class="card" id="q91" data-f="4">
+    <div class="qhead"><span class="qno">問91</span><span class="badge">紛争・手形</span></div>
+    <p class="qtext">支払督促に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">支払督促は、債権者の申立てに基づき、証拠調べを経ずに簡易・迅速に行われる督促手続である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">支払督促は、必ず口頭弁論を経て判決で行われる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">支払督促には、債務者は一切異議を述べられない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">支払督促は、刑事手続の一種である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">支払督促は金銭債権等について書記官が証拠調べなく発する簡易迅速な手続。督促異議が出ると通常訴訟に移行する。</p>
+      <p class="ref">根拠：民事訴訟法382条（支払督促）</p>
+    </div>
+  </article>
+  <article class="card" id="q92" data-f="4">
+    <div class="qhead"><span class="qno">問92</span><span class="badge">紛争・手形</span></div>
+    <p class="qtext">裁判制度に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">日本の裁判制度では、原則として一つの事件について3回まで審理を受けられる三審制が採用されている。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">日本の裁判は、原則として一審のみで確定する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">民事裁判には、上訴の制度は存在しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">裁判は、当事者の合意があっても一切やり直せない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">原則として第一審・控訴審・上告審の三審制がとられ、慎重な審理と当事者の救済を図る。</p>
+      <p class="ref">根拠：裁判所法（三審制）</p>
+    </div>
+  </article>
+  <article class="card" id="q93" data-f="4">
+    <div class="qhead"><span class="qno">問93</span><span class="badge">紛争・手形</span></div>
+    <p class="qtext">強制執行に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">強制執行は、確定判決などの債務名義に基づいて、債権者の権利を強制的に実現する手続である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">強制執行は、債権者が自力で相手方の財産を差し押さえる手続である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">強制執行には、債務名義は不要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">確定判決があっても、強制執行はできない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">強制執行は確定判決・和解調書・公正証書などの債務名義に基づき、国家機関が権利を強制的に実現する手続である。</p>
+      <p class="ref">根拠：民事執行法22条（債務名義に基づく強制執行）</p>
+    </div>
+  </article>
+  <article class="card" id="q94" data-f="4">
+    <div class="qhead"><span class="qno">問94</span><span class="badge">紛争・手形</span></div>
+    <p class="qtext">民事保全に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">仮差押えや仮処分などの民事保全は、将来の強制執行などを確保するために暫定的に行われる手続である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">民事保全は、紛争を終局的に解決する判決手続である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">民事保全は、刑事事件における逮捕手続である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">民事保全という制度は存在しない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">仮差押え・仮処分などの民事保全は、権利の実現を保全するため暫定的・迅速に行われる手続である。</p>
+      <p class="ref">根拠：民事保全法（仮差押え・仮処分）</p>
+    </div>
+  </article>
+  <article class="card" id="q95" data-f="4">
+    <div class="qhead"><span class="qno">問95</span><span class="badge">紛争・手形</span></div>
+    <p class="qtext">裁判上の和解に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">裁判上の和解が成立すると、その内容は確定判決と同一の効力を有する。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">裁判上の和解には、何の法的効力もない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">和解は、必ず判決によらなければ成立しない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">裁判上の和解は、当事者を拘束しない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">訴訟上の和解が成立し調書に記載されると、確定判決と同一の効力を有する。</p>
+      <p class="ref">根拠：民事訴訟法267条（裁判上の和解）</p>
+    </div>
+  </article>
+  <article class="card" id="q96" data-f="4">
+    <div class="qhead"><span class="qno">問96</span><span class="badge">紛争・手形</span></div>
+    <p class="qtext">仲裁に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">仲裁は、当事者の合意に基づいて紛争の解決を仲裁人に委ね、その判断に服する手続である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">仲裁は、裁判所が当事者の合意なく行う手続である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">仲裁判断には、当事者を拘束する効力はない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">仲裁は、必ず三審制で行われる。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">仲裁は当事者の仲裁合意に基づき、仲裁人の判断（仲裁判断）に服する裁判外紛争解決手続（ADR）である。</p>
+      <p class="ref">根拠：仲裁法（仲裁合意・仲裁判断）</p>
+    </div>
+  </article>
+  <article class="card" id="q97" data-f="4">
+    <div class="qhead"><span class="qno">問97</span><span class="badge">紛争・手形</span></div>
+    <p class="qtext">手形・小切手に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">約束手形は、振出人が一定の金額の支払いを約束する有価証券である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">小切手は、信用を供与するための手段として用いられる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">手形・小切手上の権利は、口頭の合意のみで譲渡され証券は不要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">約束手形には、支払期日（満期）を記載できない。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">約束手形は振出人が一定金額の支払いを約束する有価証券。小切手は一覧払いの支払手段で、手形・小切手は要式・有価証券である。</p>
+      <p class="ref">根拠：手形法・小切手法（有価証券）</p>
+    </div>
+  </article>
+  <article class="card" id="q98" data-f="4">
+    <div class="qhead"><span class="qno">問98</span><span class="badge">紛争・手形</span></div>
+    <p class="qtext">約束手形の要式性に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">約束手形は要式証券であり、必要的記載事項を欠くと原則として手形としての効力を生じない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">約束手形は、何も記載しなくても有効である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">手形の記載事項は、法律上一切定められていない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">手形は、要式証券ではなく自由な様式でよい。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">手形は法定の記載事項（手形要件）を備えるべき要式証券で、これを欠くと原則無効となる。</p>
+      <p class="ref">根拠：手形法（手形要件・要式証券）</p>
+    </div>
+  </article>
+  <article class="card" id="q99" data-f="4">
+    <div class="qhead"><span class="qno">問99</span><span class="badge">紛争・手形</span></div>
+    <p class="qtext">手形の裏書に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">約束手形上の権利は、原則として裏書によって他人に譲渡することができる。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">手形上の権利は、譲渡することができない。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">手形の譲渡には、必ず振出人の承諾が必要である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">裏書とは、手形を破棄する行為をいう。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">手形上の権利は裏書により譲渡され、裏書の連続により権利者が推定される。</p>
+      <p class="ref">根拠：手形法11条・14条（裏書による譲渡）</p>
+    </div>
+  </article>
+  <article class="card" id="q100" data-f="4">
+    <div class="qhead"><span class="qno">問100</span><span class="badge">紛争・手形</span></div>
+    <p class="qtext">小切手に関する次の記述のうち、最も適切なものを1つ選びなさい。</p>
+    <ul class="choices"><li><button type="button" class="choice" data-correct="1"><span class="lab">ア</span><span class="ctxt">小切手は支払いの手段として用いられ、原則として一覧払いである。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">イ</span><span class="ctxt">小切手は、信用の供与を目的とし将来の支払いを約束する証券である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">ウ</span><span class="ctxt">小切手は、満期を定めて将来支払う有価証券である。</span></button></li><li><button type="button" class="choice" data-correct="0"><span class="lab">エ</span><span class="ctxt">小切手は、銀行以外でも満期を定めて利用する有価証券である。</span></button></li></ul>
+    <div class="actions">
+      <button type="button" class="reveal-btn">解答・解説</button>
+      <button type="button" class="reset-btn" hidden>やり直す</button>
+    </div>
+    <div class="answer" hidden>
+      <p class="correct">正解：<strong>ア</strong></p>
+      <p class="explain">小切手は現金に代わる支払手段であり、原則として一覧払い（呈示があれば直ちに支払う）。信用供与を目的とする手形とは性質が異なる。</p>
+      <p class="ref">根拠：小切手法28条（一覧払い）</p>
+    </div>
+  </article>
+
+  <footer class="note">
+    学習用に作成したオリジナル練習問題です。<br>
+    最新・正確な出題範囲は東京商工会議所の公式試験要項をご確認ください。
+  </footer>
+</div>
+<button type="button" id="toTop" aria-label="ページ上部へ戻る">▲</button>
+
+<script>
+(function(){
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var heads = Array.prototype.slice.call(document.querySelectorAll('.field-head'));
+  var total = cards.length;
+  var scoreEl = document.getElementById('score');
+  var barFill = document.getElementById('barFill');
+
+  function refreshScore(){
+    var answered = 0, correct = 0;
+    cards.forEach(function(card){
+      if(card.getAttribute('data-answered') === '1'){
+        answered++;
+        if(card.getAttribute('data-result') === '1') correct++;
+      }
+    });
+    scoreEl.textContent = answered + '/' + total + '　正解' + correct;
+    barFill.style.width = (answered/total*100) + '%';
+  }
+
+  function reveal(card){
+    var ans = card.querySelector('.answer');
+    if(ans) ans.hidden = false;
+    card.querySelectorAll('.choice').forEach(function(b){
+      if(b.getAttribute('data-correct') === '1') b.classList.add('is-correct');
+    });
+    var rb = card.querySelector('.reset-btn');
+    if(rb) rb.hidden = false;
+  }
+
+  function resetCard(card){
+    card.classList.remove('locked');
+    card.removeAttribute('data-answered');
+    card.removeAttribute('data-result');
+    var ans = card.querySelector('.answer');
+    if(ans) ans.hidden = true;
+    card.querySelectorAll('.choice').forEach(function(b){ b.classList.remove('is-correct','is-wrong'); });
+    var rb = card.querySelector('.reset-btn');
+    if(rb) rb.hidden = true;
+  }
+
+  cards.forEach(function(card){
+    card.querySelectorAll('.choice').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if(card.classList.contains('locked')) return;
+        card.classList.add('locked');
+        card.setAttribute('data-answered','1');
+        var ok = btn.getAttribute('data-correct') === '1';
+        card.setAttribute('data-result', ok ? '1' : '0');
+        if(!ok) btn.classList.add('is-wrong');
+        reveal(card);
+        refreshScore();
+      });
+    });
+    card.querySelector('.reveal-btn').addEventListener('click', function(){
+      var ans = card.querySelector('.answer');
+      if(ans && ans.hidden){ card.classList.add('locked'); reveal(card); }
+      else if(ans){ ans.hidden = true; }
+    });
+    card.querySelector('.reset-btn').addEventListener('click', function(){ resetCard(card); refreshScore(); });
+  });
+
+  // filter chips
+  document.getElementById('chips').addEventListener('click', function(e){
+    var chip = e.target.closest('.chip');
+    if(!chip) return;
+    Array.prototype.slice.call(this.querySelectorAll('.chip')).forEach(function(c){ c.classList.remove('active'); });
+    chip.classList.add('active');
+    var f = chip.getAttribute('data-f');
+    function show(el){ var m = (f === 'all' || el.getAttribute('data-f') === f); el.style.display = m ? '' : 'none'; }
+    cards.forEach(show);
+    heads.forEach(show);
+    window.scrollTo(0,0);
+  });
+
+  document.getElementById('openAll').addEventListener('click', function(){
+    cards.forEach(function(card){ if(card.style.display !== 'none'){ card.classList.add('locked'); reveal(card); } });
+  });
+  document.getElementById('closeAll').addEventListener('click', function(){
+    cards.forEach(resetCard); refreshScore();
+  });
+  document.getElementById('toTop').addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  refreshScore();
+})();
+</script>
+</body>
+</html>
